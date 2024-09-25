@@ -12,7 +12,7 @@ I started by trying to generate all possible longest paths first and then fittin
 - **First Idea:** Generate all possible combinations of path blocks and space blocks. Check if the configuration is valid, and then find a layout that fits the pentominoes and maintains the path.
 - **Issue:** This doesn’t scale. For example, a 5x5 grid has around 43.6 billion possible 17-path-long configurations, which is just insane to handle.
 
-<img src="https://github.com/user-attachments/assets/9107c937-09db-46ca-b339-0430de3ec047" width="300" height="400"/>
+<img src="https://github.com/user-attachments/assets/9107c937-09db-46ca-b339-0430de3ec047" width="300"/>
 
 ### Approach #2: Pathfinding
 I tried multiple DFS variants, with the final one being a greedy DFS using a heuristic based on distance from the center. It worked okay for small grids, but performance tanked on larger ones.
@@ -22,7 +22,7 @@ I tried multiple DFS variants, with the final one being a greedy DFS using a heu
 ### Approach #3: MILP for Pentominoes Fitting
 I tried implementing MILP directly on pentomino fitting but hit a wall. It was too complex, and I couldn’t debug it properly. I had to scale down multiple times, and it still didn’t work. It is however promising as it can find complex solutions quite quickly, but modelling my problem in constraints and now using too many constraints is were the challenge arises. This 12x12 grid took the same time the 7x7 took and considering more than exponential groth, this is very astonishing.
 
-<img src="https://github.com/user-attachments/assets/cd82097b-93ef-48ce-8049-5412ced03392" width="600" height="400"/>
+<img src="https://github.com/user-attachments/assets/cd82097b-93ef-48ce-8049-5412ced03392" width="600"/>
 
 ### Where the Project is Heading
 Right now, I’m still looking for a good way to tackle this problem. Possible ideas revolve around getting deeper into MILP to optimize number of constraints or attempting different pruning approaches. My goal would be to optimally solve an 8x8 grid with pentomino fittings as this would be above the current best algorithm.
